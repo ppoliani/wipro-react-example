@@ -1,7 +1,7 @@
 import { createAction } from 'redux-actions';
 import fetch from '../../helpers/api';
 import { partial } from '../../helpers/fn';
-import { Just, Nothing } from '../Maybe';
+import Maybe from '../Maybe';
 
 export const SET_LOADING = 'SEARCH::SET_LOADING';
 export const SET_SEARCH_RESULTS= 'SEARCH::SET_SEARCH_RESULTS';
@@ -17,7 +17,7 @@ export const getSearchResultsRoot = (fetch, searchCriteria) => dispatch => {
   // ToDo(Pavlos): construct the url with the search criteria
   const getUrl = searchCriteria => `${DUMMY_URL}?q=${searchCriteria}`;
   const fetchData = (fetch) ['∘'] (getUrl)
-  const fromNullable = data => data ? Just(data) : Nothing;
+  const fromNullable = data => data ? Maybe.Just(data) : Maybe.Nothing;
 
   dispatch(setLoading());
 

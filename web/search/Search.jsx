@@ -20,7 +20,7 @@ class Search extends Component {
 
   renderResults(searchResults) {
     return searchResults.cata({
-      Just: ({value}) => <div>{value.title}</div>,
+      Just: value => <div>{value.title}</div>,
       Nothing: () => <div>No results available</div>
     })
   }
@@ -34,8 +34,8 @@ class Search extends Component {
           search.get('searchResults').cata({
             Empty: () => <div></div>,
             Loading: () => <div><CircularProgress size={80} thickness={5} /></div>,
-            Success: ({data: searchResults}) => this.renderResults(searchResults),
-            Failure: ({error}) => <div>{error.message}</div>
+            Success: searchResults => this.renderResults(searchResults),
+            Failure: error => <div>{error.message}</div>
           })
         }
       </div>
