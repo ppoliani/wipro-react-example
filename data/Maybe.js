@@ -1,3 +1,6 @@
-import Sum from './Sum';
+import daggy from 'daggy';
 
-export default Sum('Maybe', ['Just', 'Nothing']);
+export default daggy.taggedSum('Maybe', {
+  Just: ['data'],
+  Nothing: []
+});

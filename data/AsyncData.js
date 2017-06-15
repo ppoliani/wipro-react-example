@@ -1,3 +1,8 @@
-import Sum from './Sum';
+import daggy from 'daggy';
 
-export default Sum('AsyncData', ['Empty', 'Loading', 'Success', 'Failure']);
+export default daggy.taggedSum('AsyncData', {
+  Empty: [],
+  Loading: [],
+  Success: ['data'],
+  Failure: ['error']
+});

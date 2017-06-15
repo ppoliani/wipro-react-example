@@ -20,7 +20,7 @@ class Search extends Component {
   }
 
   renderResults(searchResults) {
-    return searchResults.matchWith({
+    return searchResults.cata({
       Just: result => <div>{result.title}</div>,
       Nothing: () => <div>No results available</div>
     })
@@ -32,11 +32,11 @@ class Search extends Component {
     return (
       <div>
         {
-          search.get('searchResults').matchWith({
+          search.get('searchResults').cata({
             Empty: () => <div></div>,
             Nothing: () => <div><CircularProgress size={80} thickness={5} /></div>,
-            Success: ({data: searchResults}) => this.renderResults(searchResults),
-            Failure: ({error}) => <div>{error.message}</div>
+            Success: (searchResults) => this.renderResults(searchResults),
+            Failure: (error) => <div>{error.message}</div>
           })
         }
       </div>
