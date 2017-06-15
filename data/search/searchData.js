@@ -1,8 +1,8 @@
 import { Map } from 'immutable';
-import { Empty } from '../AsyncData';
-import { Nothing } from '../Maybe';
+import AsyncData from  '../AsyncData';
+import Maybe from '../Maybe';
 
 export default Map({
-  searchResults: Empty,
-  error: Nothing
+  searchResults: AsyncData.Empty,
+  error: Maybe.Nothing
 });

@@ -2,7 +2,6 @@ import React, {Component, PropTypes} from 'react';
 import AutoComplete from 'material-ui/AutoComplete';
 import CircularProgress from 'material-ui/CircularProgress';
 import {autobind} from 'core-decorators';
-import '../../helpers/rop';
 
 class Search extends Component {
   @autobind
@@ -21,7 +20,7 @@ class Search extends Component {
 
   renderResults(searchResults) {
     return searchResults.cata({
-      Just: result => <div>{result.title}</div>,
+      Just: ({value}) => <div>{value.title}</div>,
       Nothing: () => <div>No results available</div>
     })
   }
@@ -34,9 +33,9 @@ class Search extends Component {
         {
           search.get('searchResults').cata({
             Empty: () => <div></div>,
-            Nothing: () => <div><CircularProgress size={80} thickness={5} /></div>,
-            Success: (searchResults) => this.renderResults(searchResults),
-            Failure: (error) => <div>{error.message}</div>
+            Loading: () => <div><CircularProgress size={80} thickness={5} /></div>,
+            Success: ({data: searchResults}) => this.renderResults(searchResults),
+            Failure: ({error}) => <div>{error.message}</div>
           })
         }
       </div>
