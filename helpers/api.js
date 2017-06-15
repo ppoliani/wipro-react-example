@@ -1,5 +1,3 @@
-import { task } from 'folktale/data/task';
-
 export default async url => {
   try {
     const response = await fetch(url);
