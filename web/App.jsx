@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {compose} from 'folktale/core/lambda';
 import AppBar from 'material-ui/AppBar';
 import Paper from 'material-ui/Paper';
+import {id} from '../helpers/fn';
 import {getSearchResults} from '../data/search/searchActions'
 import Search from './search/Search';
 
@@ -29,9 +30,9 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => state;
+const mapStateToProps = id
 const mapDispatchToProps = dispatch => ({
-    startSearch: compose(dispatch, getSearchResults)
+  startSearch: (dispatch) ['∘'] (getSearchResults)
 });
 
 export default connect(

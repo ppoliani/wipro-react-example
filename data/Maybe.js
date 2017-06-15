@@ -1,17 +1,3 @@
-const Maybe = {
-  Just: data => {
-    this._value = data;
-    this.tag = 'Just';
-  },
+import Sum from './Sum';
 
-  Nothing: () => {
-    this._value = null;
-    this.tag = 'Nothing';
-  },
-
-  matchWith: pattern => {
-    pattern[this.tag](this._value);
-  }
-};
-
-export default Maybe;
+export default Sum('Maybe', ['Just', 'Nothing']);

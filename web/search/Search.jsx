@@ -21,7 +21,7 @@ class Search extends Component {
 
   renderResults(searchResults) {
     return searchResults.matchWith({
-      Just: ({value: result}) => <div>{result.title}</div>,
+      Just: result => <div>{result.title}</div>,
       Nothing: () => <div>No results available</div>
     })
   }
@@ -34,7 +34,7 @@ class Search extends Component {
         {
           search.get('searchResults').matchWith({
             Empty: () => <div></div>,
-            Loading: () => <div><CircularProgress size={80} thickness={5} /></div>,
+            Nothing: () => <div><CircularProgress size={80} thickness={5} /></div>,
             Success: ({data: searchResults}) => this.renderResults(searchResults),
             Failure: ({error}) => <div>{error.message}</div>
           })
